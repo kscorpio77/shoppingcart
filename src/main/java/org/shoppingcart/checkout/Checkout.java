@@ -22,7 +22,20 @@ public class Checkout {
         return total;
     }
 
-    public double calculateTotalWithOffers(List<String> list) {
-        return 0.0;
+    public double calculateTotalWithOffers(List<String> items) {
+        if (items == null || items.isEmpty()) {
+            return 0.0;
+        }
+        long appleCount = items.stream().filter(item -> item.equalsIgnoreCase("Apple")).count();
+        long orangeCount = items.stream().filter(item -> item.equalsIgnoreCase("Orange")).count();
+
+        // Buy One Get One Free on Apples
+        long applesToPayFor = (appleCount / 2) + (appleCount % 2);
+
+        // 3 for 2 on Oranges
+        long orangesToPayFor = (orangeCount / 3) * 2 + (orangeCount % 3);
+
+        return (applesToPayFor * APPLE_PRICE) + (orangesToPayFor * ORANGE_PRICE);
     }
+
 }
