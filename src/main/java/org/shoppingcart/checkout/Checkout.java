@@ -21,4 +21,8 @@ public class Checkout {
         }
         return total;
     }
+
+    public double calculateTotalWithOffers(List<String> list) {
+        return 0.0;
+    }
 }
