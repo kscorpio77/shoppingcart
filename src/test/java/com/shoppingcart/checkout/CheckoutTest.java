@@ -37,7 +37,7 @@ public class CheckoutTest {
     public void shouldHandleCaseInsensitiveItems() {
         List<String> items = Arrays.asList("apple", "APPLE", "Apple");
         double total = checkout.calculateTotal(items);
-        assertEquals(1.80, total); // 3 apples
+        assertEquals(1.80, total, 0.001); // 3 apples
     }
 
 }
