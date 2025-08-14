@@ -18,5 +18,11 @@ public class CheckoutTest {
         assertEquals(0.0, total);
     }
 
+    @Test
+    public void shouldCalculateTotalWithoutOffers() {
+        List<String> items = Arrays.asList("Apple", "Apple", "Orange", "Apple");
+        double total = checkout.calculateTotal(items);
+        assertEquals(2.05, total);
+    }
 
 }
