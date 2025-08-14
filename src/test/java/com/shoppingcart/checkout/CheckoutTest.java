@@ -25,4 +25,19 @@ public class CheckoutTest {
         assertEquals(2.05, total);
     }
 
+    @Test
+    public void shouldIgnoreInvalidItems() {
+        List<String> items = Arrays.asList("Apple", "Banana", "Orange");
+        double total = checkout.calculateTotal(items);
+        assertEquals(0.85, total); // Apple + Orange only
+    }
+
+
+    @Test
+    public void shouldHandleCaseInsensitiveItems() {
+        List<String> items = Arrays.asList("apple", "APPLE", "Apple");
+        double total = checkout.calculateTotal(items);
+        assertEquals(1.80, total); // 3 apples
+    }
+
 }
